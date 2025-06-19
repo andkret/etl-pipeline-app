@@ -1,0 +1,16 @@
+﻿
+"Data Engineering Tools Guide V3"
+"by Andreas Kretz LearnDataEngineering.com",,"Cloud Native",,,"Cloud Agnostic"
+,,"AWS","Azure","GCP","Open Source","Vendor"
+"Connect","APIs","API Gateway","API Management","API Gateway","FastAPI Flask Django GraphQL"
+,"Data Integration Tools","AWS Glue Stepfunctions","Data Factory","Cloud Data Fusion Dataprep","Airbyte Apache Nifi","Fivetran Streamsets Informatica Talend Hevo Data Streamsets Trifacta"
+"Buffer","Message Queues","Kinesis  Kinesis Firehose SQS","EventHub","Pub/Sub","Apache Kafka RabbitMQ  Redis (Pub/Sub)"
+"Process","Processing","Lambda Stepfunctions Glue ECS EMR EKS","Functions  Data Factory","Cloud Function DataFlow  DataProc","Python Apache Spark Apache Flink Docker Kubernetes dbt Logstash","Databricks Alteryx Exasol Matillion"
+,"Scheduling","EventBridge Cloudwatch","Azure Logic Apps Azure Batch","Cloud Scheduler Cloud Batch Cloud Workflows Cloud Composer","Airflow Luigi Dagster Perfect","Astronomer"
+,"Machine Learning","SageMaker","Azure ML  Synapse Analytics","Cloud Datalab ML, AutoML Vertex AI BigQueryML","Tensorflow  PyTorch  Keras"
+"Store","OLTP + File Stores","S3 RDS DynamoDB  Timestream","CosmosDB  Azure SQL DB  Blob Storage","Cloud Storage CloudSpanner  CloudSQL BigTable Firestore","MySQL MongoDB Postgres  Elasticsearch Redis (K/V store) TimescaleDB","Microsoft SQL Server  Oracle SQL DB"
+,"OLAP","Redshift + Redshift Spectrum  Athena","Azure Synapse Azure Data Explorer","BigQuery","Apache Druid  InfluxDB Presto Apache Hive","Snowflake Databricks (Delta Lake) Oracle DW IBM Db2 SAP HANA Rockset"
+,"Data Catalog","AWS Glue Data Catalog","Azure Data Catalog","Cloud Data Catalog","Amundsen Hive Metastore","Attacama"
+"Visualize","BI Tools","Quicksight","(PowerBI)","Data Studio Looker","Streamlit  Grafana  Kibana  Apache Superset Metabase","Tableau  QlikSense PowerBI"
+
+"Bonus","Various Categories","Data Observability Kensu.io Anomalo ","Data Quality Great Expectations TIBCO SODA SQL","CI/CD Jenkins Gitlab GitHub Actions"
