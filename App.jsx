@@ -16,40 +16,32 @@ import ReactFlow, {
 import 'reactflow/dist/style.css'
 import './style.css'
 
-/**
- * Global ID counter to ensure each node gets a unique identifier.
- * We increment this counter on each getId() call.
- */
 let id = 0
 const getId = () => `node_${id++}`
 
-/**
- * SideNode
- * Custom React Flow node component that renders:
- *  - A fixed-size container with a label and editable textarea
- *  - Connection handles on the left (target) and right (source)
- */
 function SideNode({ id, data }) {
   return (
     <div className="side-node">
-      {/* Incoming connection handle, vertically centered */}
+      <button className="node-delete-btn" onClick={() => data.onDelete(id)}>🗑️</button>
       <Handle
         type="target"
         position={Position.Left}
         style={{ top: '50%', transform: 'translateY(-50%)' }}
       />
-
-      {/* Node label */}
-      <div className="node-label">{data.label}</div>
-
-      {/* Editable description area */}
+      {data.isCustom ? (
+        <input
+          className="node-label-input"
+          value={data.label}
+          onChange={e => data.onLabelChange(id, e.target.value)}
+        />
+      ) : (
+        <div className="node-label">{data.label}</div>
+      )}
       <textarea
         className="node-desc"
         value={data.description}
         onChange={e => data.onDescriptionChange(id, e.target.value)}
       />
-
-      {/* Outgoing connection handle, vertically centered */}
       <Handle
         type="source"
         position={Position.Right}
@@ -59,13 +51,8 @@ function SideNode({ id, data }) {
   )
 }
 
-// Register our custom node type under the key "sideNode"
 const nodeTypes = { sideNode: SideNode }
 
-/**
- * App
- * Top-level component that provides the React Flow context.
- */
 export default function App() {
   return (
     <ReactFlowProvider>
@@ -74,39 +61,25 @@ export default function App() {
   )
 }
 
-/**
- * PipelineBuilder
- * Main component that renders:
- *  - A sidebar for dragging tools onto the canvas
- *  - The React Flow canvas for building the pipeline
- *
- * Responsibilities:
- * 1. Load and structure tool definitions from tools.json
- * 2. Load default descriptions from toolDescriptions.json
- * 3. Manage React Flow state: nodes, edges, connections
- * 4. Handle drag & drop from sidebar to canvas
- * 5. Export/import pipeline JSON (with ID collision handling)
- */
 function PipelineBuilder() {
-  const wrapperRef = useRef(null)          // Ref to the React Flow wrapper DOM element
-  const [rfInstance, setRfInstance] = useState(null) // React Flow instance for coordinate transforms
-
-  // Canvas state
+  const wrapperRef = useRef(null)
+  const [rfInstance, setRfInstance] = useState(null)
   const [nodes, setNodes] = useState([])
   const [edges, setEdges] = useState([])
-
-  // Sidebar state: structured tools and collapse flags
   const [groupedTools, setGroupedTools] = useState({})
   const [collapsed, setCollapsed] = useState({})
-
-  // Default descriptions loaded from JSON
   const [descriptions, setDescriptions] = useState({})
 
-  /**
-   * Load tools.json once on mount.
-   * Builds a nested object: platform → category → type → [tool names]
-   * Also initializes collapse state for sidebar sections.
-   */
+  useEffect(() => {
+    const handleBeforeUnload = e => {
+      e.preventDefault()
+      e.returnValue = ''
+    }
+    window.addEventListener('beforeunload', handleBeforeUnload)
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload)
+  }, [])
+
+  // Load tools.json
   useEffect(() => {
     fetch('tools.json')
       .then(res => res.json())
@@ -119,12 +92,9 @@ function PipelineBuilder() {
           platforms.forEach(p => {
             const arr = entry[p] || []
             if (!arr.length) return
-            // Create category container
-            nested[p][entry.category] = nested[p][entry.category] || {}
+            if (!nested[p][entry.category]) nested[p][entry.category] = {}
             const types = nested[p][entry.category]
-            // Create type array
-            types[entry.type] = types[entry.type] || []
-            // Append tools, avoiding duplicates
+            if (!types[entry.type]) types[entry.type] = []
             arr.forEach(toolName => {
               if (!types[entry.type].includes(toolName)) {
                 types[entry.type].push(toolName)
@@ -134,18 +104,14 @@ function PipelineBuilder() {
         })
 
         setGroupedTools(nested)
-
-        // Initialize collapse flags: everything collapsed by default
         const init = {}
         platforms.forEach(p => {
           init[`plat|${p}`] = true
           Object.entries(nested[p]).forEach(([cat, types]) => {
             init[`cat|${p}|${cat}`] = true
-            if (Object.keys(types).length > 1) {
-              Object.keys(types).forEach(type => {
-                init[`type|${p}|${cat}|${type}`] = true
-              })
-            }
+            Object.keys(types).forEach(type => {
+              init[`type|${p}|${cat}|${type}`] = true
+            })
           })
         })
         setCollapsed(init)
@@ -153,10 +119,7 @@ function PipelineBuilder() {
       .catch(console.error)
   }, [])
 
-  /**
-   * Load default tool descriptions from JSON on mount.
-   * Maps tool name → description string.
-   */
+  // Load descriptions
   useEffect(() => {
     fetch('toolDescriptions.json')
       .then(res => res.json())
@@ -170,10 +133,6 @@ function PipelineBuilder() {
       .catch(console.error)
   }, [])
 
-  /**
-   * onDescriptionChange
-   * Updates a node's `data.description` as the user types.
-   */
   const onDescriptionChange = useCallback((nodeId, desc) => {
     setNodes(nds =>
       nds.map(n =>
@@ -182,31 +141,53 @@ function PipelineBuilder() {
     )
   }, [])
 
-  // React Flow built-in handlers
-  const onNodesChange = useCallback(changes => setNodes(nds => applyNodeChanges(changes, nds)), [])
-  const onEdgesChange = useCallback(changes => setEdges(eds => applyEdgeChanges(changes, eds)), [])
-  const onConnect = useCallback(conn =>
+  const handleDeleteNode = useCallback(nodeId => {
+    setNodes(nds => nds.filter(n => n.id !== nodeId))
     setEdges(eds =>
-      addEdge({ ...conn, animated: true, markerEnd: { type: MarkerType.ArrowClosed } }, eds)
-    ), []
+      eds.filter(e => e.source !== nodeId && e.target !== nodeId)
+    )
+  }, [])
+
+  const handleLabelChange = useCallback((nodeId, label) => {
+    setNodes(nds =>
+      nds.map(n =>
+        n.id === nodeId ? { ...n, data: { ...n.data, label } } : n
+      )
+    )
+  }, [])
+
+  const onNodesChange = useCallback(
+    changes => setNodes(nds => applyNodeChanges(changes, nds)),
+    []
+  )
+  const onEdgesChange = useCallback(
+    changes => setEdges(eds => applyEdgeChanges(changes, eds)),
+    []
+  )
+  const onConnect = useCallback(
+    conn =>
+      setEdges(eds =>
+        addEdge(
+          { ...conn, animated: true, markerEnd: { type: MarkerType.ArrowClosed } },
+          eds
+        )
+      ),
+    []
   )
   const onDragOver = useCallback(e => {
     e.preventDefault()
     e.dataTransfer.dropEffect = 'move'
   }, [])
 
-  /**
-   * onDrop
-   * Handles dragging a tool from the sidebar onto the canvas.
-   * Always appends a new node to the current `nodes` array via functional update.
-   */
   const onDrop = useCallback(
     e => {
       e.preventDefault()
       const bounds = wrapperRef.current.getBoundingClientRect()
       let payload
       try {
-        payload = JSON.parse(e.dataTransfer.getData('application/reactflow'))
+        payload = JSON.parse(
+          e.dataTransfer.getData('application/reactflow')
+        )
       } catch {
         return
       }
@@ -226,21 +207,21 @@ function PipelineBuilder() {
             label: payload.label,
             description: descriptions[payload.label] || '',
             onDescriptionChange,
+            onDelete: handleDeleteNode,
+            onLabelChange: handleLabelChange,
+            isCustom: payload.isCustom || false,
           },
         },
       ])
     },
-    [rfInstance, descriptions, onDescriptionChange]
+    [rfInstance, descriptions, onDescriptionChange, handleDeleteNode, handleLabelChange]
   )
 
-  /**
-   * exportJson
-   * Serializes current nodes & edges to JSON and triggers file download.
-   */
   const exportJson = useCallback(() => {
-    const blob = new Blob([JSON.stringify({ nodes, edges }, null, 2)], {
-      type: 'application/json',
-    })
+    const blob = new Blob(
+      [JSON.stringify({ nodes, edges }, null, 2)],
+      { type: 'application/json' }
+    )
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a')
     a.href = url
@@ -248,11 +229,6 @@ function PipelineBuilder() {
     a.click()
   }, [nodes, edges])
 
-  /**
-   * importJson
-   * Reads a JSON file, reattaches description callback, resets the module ID
-   * counter to avoid collisions, and replaces the canvas in one shot.
-   */
   const importJson = useCallback(
     e => {
       const file = e.target.files[0]
@@ -260,7 +236,8 @@ function PipelineBuilder() {
       const reader = new FileReader()
       reader.onload = () => {
         try {
-          const { nodes: inN = [], edges: inE = [] } = JSON.parse(reader.result)
+          const { nodes: inN = [], edges: inE = [] } =
+            JSON.parse(reader.result)
           let maxIndex = -1
           const remapped = inN.map(n => {
             const match = /^node_(\d+)$/.exec(n.id)
@@ -270,10 +247,15 @@ function PipelineBuilder() {
             }
             return {
               ...n,
-              data: { ...n.data, onDescriptionChange, id: n.id },
+              data: {
+                ...n.data,
+                onDescriptionChange,
+                onDelete: handleDeleteNode,
+                onLabelChange: handleLabelChange,
+                isCustom: n.data.isCustom || false,
+              },
             }
           })
-          // move global counter past the highest imported ID
           id = maxIndex + 1
           setNodes(remapped)
           setEdges(inE)
@@ -284,37 +266,31 @@ function PipelineBuilder() {
       reader.readAsText(file)
       e.target.value = ''
     },
-    [onDescriptionChange]
+    [onDescriptionChange, handleDeleteNode, handleLabelChange]
   )
 
-  /**
-   * toggle
-   * Toggles a boolean collapse flag in the sidebar state.
-   */
-  const toggle = useCallback(key => {
-    setCollapsed(c => ({ ...c, [key]: !c[key] }))
-  }, [])
+  const toggle = useCallback(
+    key => setCollapsed(c => ({ ...c, [key]: !c[key] })),
+    []
+  )
 
-  /**
-   * ToolItem
-   * Renders a draggable tool name in the sidebar.
-   */
-  const ToolItem = ({ label }) => (
+  const ToolItem = ({ label, isCustom = false }) => (
     <div
       className="tool"
       draggable
       onDragStart={e =>
-        e.dataTransfer.setData('application/reactflow', JSON.stringify({ label }))
+        e.dataTransfer.setData(
+          'application/reactflow',
+          JSON.stringify({ label, isCustom })
+        )
       }
     >
       {label}
     </div>
   )
 
-  // ── Render ───────────────────────────────────────────────────────
   return (
     <div className="dndflow">
-      {/* Sidebar with collapsible categories */}
       <aside className="tools-pane">
         <div className="tools-header">Tools</div>
         <div className="tools-content">
@@ -331,17 +307,39 @@ function PipelineBuilder() {
                     {collapsed[pKey] ? '+' : '–'}
                   </span>
                 </div>
-                <div
-                  className={`tools-items ${
-                    collapsed[pKey] ? 'collapsed' : 'expanded'
-                  }`}
-                >
-                  {Object.entries(categories).map(([category, types]) => {
-                    const cKey = `cat|${platform}|${category}`
-                    const typeKeys = Object.keys(types)
-                    if (typeKeys.length === 1) {
-                      // Skip type level if only one type present
-                      const tools = types[typeKeys[0]]
+                <div className={`tools-items ${
+                  collapsed[pKey] ? 'collapsed' : 'expanded'
+                }`}>
+                  {Object.entries(categories).map(
+                    ([category, types]) => {
+                      const cKey = `cat|${platform}|${category}`
+                      const typeKeys = Object.keys(types)
+                      if (typeKeys.length === 1) {
+                        const tools = types[typeKeys[0]]
+                        return (
+                          <div key={category}>
+                            <div
+                              className="tools-category-header tools-level-2"
+                              onClick={() => toggle(cKey)}
+                            >
+                              {category}{' '}
+                              <span className="toggle-indicator">
+                                {collapsed[cKey] ? '+' : '–'}
+                              </span>
+                            </div>
+                            <div className={`tools-items ${
+                              collapsed[cKey] ? 'collapsed' : 'expanded'
+                            }`}>
+                              {tools.map(t => (
+                                <ToolItem
+                                  key={t}
+                                  label={t}
+                                />
+                              ))}
+                            </div>
+                          </div>
+                        )
+                      }
                       return (
                         <div key={category}>
                           <div
@@ -353,64 +351,50 @@ function PipelineBuilder() {
                               {collapsed[cKey] ? '+' : '–'}
                             </span>
                           </div>
-                          <div
-                            className={`tools-items ${
-                              collapsed[cKey] ? 'collapsed' : 'expanded'
-                            }`}
-                          >
-                            {tools.map(t => (
-                              <ToolItem key={t} label={t} />
-                            ))}
+                          <div className={`tools-items ${
+                            collapsed[cKey] ? 'collapsed' : 'expanded'
+                          }`}>
+                            {typeKeys.map(type => {
+                              const tKey = `type|${platform}|${category}|${type}`
+                              const tools = types[type]
+                              return (
+                                <div key={type}>
+                                  <div
+                                    className="tools-category-header tools-level-3"
+                                    onClick={() => toggle(tKey)}
+                                  >
+                                    {type}{' '}
+                                    <span className="toggle-indicator">
+                                      {collapsed[tKey] ? '+' : '–'}
+                                    </span>
+                                  </div>
+                                  <div className={`tools-items ${
+                                    collapsed[tKey]
+                                      ? 'collapsed'
+                                      : 'expanded'
+                                  }`}>
+                                    {tools.map(t => (
+                                      <ToolItem
+                                        key={t}
+                                        label={t}
+                                      />
+                                    ))}
+                                  </div>
+                                </div>
+                              )
+                            })}
                           </div>
                         </div>
                       )
                     }
-                    return (
-                      <div key={category}>
-                        <div
-                          className="tools-category-header tools-level-2"
-                          onClick={() => toggle(cKey)}
-                        >
-                          {category}{' '}
-                          <span className="toggle-indicator">
-                            {collapsed[cKey] ? '+' : '–'}
-                          </span>
-                        </div>
-                        <div
-                          className={`tools-items ${
-                            collapsed[cKey] ? 'collapsed' : 'expanded'
-                          }`}
-                        >
-                          {typeKeys.map(type => {
-                            const tKey = `type|${platform}|${category}|${type}`
-                            const tools = types[type]
-                            return (
-                              <div key={type}>
-                                <div
-                                  className="tools-category-header tools-level-3"
-                                  onClick={() => toggle(tKey)}
-                                >
-                                  {type}{' '}
-                                  <span className="toggle-indicator">
-                                    {collapsed[tKey] ? '+' : '–'}
-                                  </span>
-                                </div>
-                                <div
-                                  className={`tools-items ${
-                                    collapsed[tKey] ? 'collapsed' : 'expanded'
-                                  }`}
-                                >
-                                  {tools.map(t => (
-                                    <ToolItem key={t} label={t} />
-                                  ))}
-                                </div>
-                              </div>
-                            )
-                          })}
-                        </div>
-                      </div>
-                    )
-                  })}
+                  )}
+                  {/* Custom element option */}
+                  <div className="tools-footer" style={{ padding: '8px' }}>
+                    <ToolItem
+                      label="➕ Custom Element"
+                      isCustom={true}
+                    />
+                  </div>
                 </div>
               </div>
             )
@@ -418,7 +402,6 @@ function PipelineBuilder() {
         </div>
       </aside>
 
-      {/* Canvas area with toolbar */}
       <div className="reactflow-wrapper" ref={wrapperRef}>
         <div className="toolbar">
           <button onClick={exportJson}>Export JSON</button>
@@ -433,7 +416,6 @@ function PipelineBuilder() {
           </label>
         </div>
 
-        {/* React Flow canvas */}
         <ReactFlow
           nodes={nodes}
           edges={edges}

@@ -57,7 +57,7 @@
 
 /* Animated collapse/expand containers */
 .tools-items {
-  overflow: hidden;
+  overflow: hidden; /* animated collapse containers */
   transition: max-height 0.3s ease;
   max-height: 0;
 }
@@ -111,7 +111,9 @@
 }
 
 /* Custom node styling */
+/* Custom node styling */
 .side-node {
+  position: relative; /* ensure delete button absolute placement */
   width: 200px;
   height: 80px;
   border: 1px solid #777;
@@ -119,12 +121,13 @@
   background: #fff;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-}
+  overflow: visible; /* allow handles to show fully */
+}  
 
 /* Handle styling on nodes */
-.handle {
+.react-flow__handle {
   background: #555;
+  border-radius: 50%; /* fully round connectors */
 }
 
 /* Node label and description */
@@ -143,4 +146,59 @@
   resize: none;
   overflow-y: auto;
   font-size: 12px;
+}
+
+.node-delete-btn {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  color: #888;
+  z-index: 10;
+}
+
+.node-delete-btn:hover {
+  color: red;
+}
+
+/* Make the “➕ Custom Element” match the regular tools */
+.tools-footer .tool {
+  padding: 6px 8px;
+  background: #fff;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  margin: 4px 0;
+  cursor: grab;
+  text-align: center;
+  font-size: 13px;
+}
+.tools-footer .tool:hover {
+  background: #f0f0f0;
+}
+
+/* Custom element title input matches .node-label */
+/* Custom element title input matches .node-label */
+.node-label-input {
+  display: block;
+  width: 100%;
+  height: 28px;
+  padding: 4px;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: bold;
+  text-align: center;
+  background: #f0f0f0;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  box-sizing: border-box;
+  line-height: inherit;
+  margin: 0;
+}
+
+.node-label-input:focus {
+  outline: none;
+  border-bottom-color: #888;
 }
