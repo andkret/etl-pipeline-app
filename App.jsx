@@ -108,7 +108,7 @@ function PipelineBuilder() {
    * Also initializes collapse state for sidebar sections.
    */
   useEffect(() => {
-    fetch('/tools.json')
+    fetch('tools.json')
       .then(res => res.json())
       .then(data => {
         const platforms = ['AWS', 'Azure', 'GCP', 'Open Source', 'Vendor']
@@ -158,7 +158,7 @@ function PipelineBuilder() {
    * Maps tool name → description string.
    */
   useEffect(() => {
-    fetch('/toolDescriptions.json')
+    fetch('toolDescriptions.json')
       .then(res => res.json())
       .then(arr => {
         const map = {}
