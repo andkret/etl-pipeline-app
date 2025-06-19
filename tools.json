@@ -1,0 +1,101 @@
+[
+  {
+    "category": "Connect",
+    "type": "APIs",
+    "AWS": ["API", "Gateway"],
+    "Azure": ["API", "Management"],
+    "GCP": ["API", "Gateway"],
+    "Open Source": ["FastAPI", "Flask", "Django", "GraphQL"],
+    "Vendor": []
+  },
+  {
+    "category": "Connect",
+    "type": "Data Integration Tools",
+    "AWS": ["AWS", "Glue", "Stepfunctions"],
+    "Azure": ["Data", "Factory"],
+    "GCP": ["Cloud", "Data", "Fusion", "Dataprep"],
+    "Open Source": ["Airbyte", "Apache", "Nifi"],
+    "Vendor": ["Fivetran", "Streamsets", "Informatica", "Talend", "Hevo", "Data", "Streamsets", "Trifacta"]
+  },
+  {
+    "category": "Buffer",
+    "type": "Message Queues",
+    "AWS": ["Kinesis", "Kinesis", "Firehose", "SQS"],
+    "Azure": ["EventHub"],
+    "GCP": ["Pub/Sub"],
+    "Open Source": ["Apache", "Kafka", "RabbitMQ", "Redis", "(Pub/Sub)"],
+    "Vendor": []
+  },
+  {
+    "category": "Process",
+    "type": "Processing",
+    "AWS": ["Lambda", "Stepfunctions", "Glue", "ECS", "EMR", "EKS"],
+    "Azure": ["Functions", "Data", "Factory"],
+    "GCP": ["Cloud", "Function", "DataFlow", "DataProc"],
+    "Open Source": ["Python", "Apache", "Spark", "Apache", "Flink", "Docker", "Kubernetes", "dbt", "Logstash"],
+    "Vendor": ["Databricks", "Alteryx", "Exasol", "Matillion"]
+  },
+  {
+    "category": "Store",
+    "type": "Warehouses",
+    "AWS": ["Redshift", "Redshift", "Serverless", "Athena"],
+    "Azure": ["Synapse"],
+    "GCP": ["BigQuery"],
+    "Open Source": ["Apache", "Hive"],
+    "Vendor": ["Snowflake", "Firebolt", "ClickHouse", "Dremio", "Starburst"]
+  },
+  {
+    "category": "Store",
+    "type": "Data Lakes",
+    "AWS": ["S3", "LakeFormation"],
+    "Azure": ["DataLakeStorage"],
+    "GCP": ["Cloud", "Storage", "Data", "Lake"],
+    "Open Source": ["Apache", "Iceberg", "Hudi", "DeltaLake"],
+    "Vendor": []
+  },
+  {
+    "category": "Orchestrate",
+    "type": "Workflow Orchestration",
+    "AWS": ["Stepfunctions", "Managed", "Workflows", "MWAA"],
+    "Azure": ["Data", "Factory"],
+    "GCP": ["Composer", "Workflows"],
+    "Open Source": ["Airflow", "Luigi", "Prefect", "Dagster"],
+    "Vendor": []
+  },
+  {
+    "category": "Monitor",
+    "type": "Observability",
+    "AWS": ["CloudWatch", "X-Ray"],
+    "Azure": ["Monitor", "Insights"],
+    "GCP": ["Operations", "Stackdriver"],
+    "Open Source": ["Prometheus", "Grafana", "OpenTelemetry"],
+    "Vendor": ["NewRelic", "Datadog", "Splunk"]
+  },
+  {
+    "category": "Secure",
+    "type": "Authentication & Authorization",
+    "AWS": ["Cognito", "IAM"],
+    "Azure": ["AD", "B2C", "RBAC"],
+    "GCP": ["IAM"],
+    "Open Source": ["Keycloak", "OAuth2", "JWT"],
+    "Vendor": ["Okta", "Auth0"]
+  },
+  {
+    "category": "Discover",
+    "type": "Data Catalog & Lineage",
+    "AWS": ["Glue", "DataCatalog"],
+    "Azure": ["Purview"],
+    "GCP": ["Data", "Catalog"],
+    "Open Source": ["ApacheAtlas"],
+    "Vendor": ["Alation", "Collibra", "Informatica"]
+  },
+  {
+    "category": "Bonus",
+    "type": "Various Categories",
+    "AWS": ["Data", "Observability", "Kensu.io", "Anomalo"],
+    "Azure": ["Data", "Quality", "Great", "Expectations", "TIBCO", "SODA", "SQL"],
+    "GCP": ["CI/CD", "Jenkins", "Gitlab", "GitHub", "Actions"],
+    "Open Source": [],
+    "Vendor": []
+  }
+]
