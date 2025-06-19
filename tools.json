@@ -97,5 +97,14 @@
     "GCP": ["CI/CD", "Jenkins", "Gitlab", "GitHub", "Actions"],
     "Open Source": [],
     "Vendor": []
+  },
+  {
+  "category": "Visualize",
+  "type": "Dashboard / BI",
+  "AWS": ["QuickSight"],
+  "Azure": ["PowerBI"],
+  "GCP": ["Looker"],
+  "Open Source": ["Superset", "Metabase", "Redash"],
+  "Vendor": ["Tableau", "Qlik", "Mode", "Hex"]
   }
 ]
