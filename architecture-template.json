@@ -1,0 +1,318 @@
+{
+  "nodes": [
+    {
+      "id": "node_1",
+      "type": "sideNode",
+      "position": {
+        "x": 30.52231129862315,
+        "y": 185.92787370620957
+      },
+      "data": {
+        "id": "node_1",
+        "label": "API",
+        "description": "gets the data"
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 30.52231129862315,
+        "y": 185.92787370620957
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_2",
+      "type": "sideNode",
+      "position": {
+        "x": 309.6560397737047,
+        "y": 183.4379204525906
+      },
+      "data": {
+        "id": "node_2",
+        "label": "Functions",
+        "description": "processes the request"
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 309.6560397737047,
+        "y": 183.4379204525906
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_3",
+      "type": "sideNode",
+      "position": {
+        "x": 494.971121642595,
+        "y": 418.5143096369294
+      },
+      "data": {
+        "id": "node_3",
+        "label": "DataLakeStorage",
+        "description": "stores the file"
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 494.971121642595,
+        "y": 418.5143096369294
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_4",
+      "type": "sideNode",
+      "position": {
+        "x": 990.4089269290683,
+        "y": 329.0868560315581
+      },
+      "data": {
+        "id": "node_4",
+        "label": "Functions",
+        "description": "queries from the data lake\nwrites into synapse"
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 990.4089269290683,
+        "y": 329.0868560315581
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_5",
+      "type": "sideNode",
+      "position": {
+        "x": 676.9492203288826,
+        "y": 39.49067927187878
+      },
+      "data": {
+        "id": "node_5",
+        "label": "EventHub",
+        "description": "receives the file location"
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 676.9492203288826,
+        "y": 39.49067927187878
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_6",
+      "type": "sideNode",
+      "position": {
+        "x": 1450.0756106268175,
+        "y": 338.2709378589339
+      },
+      "data": {
+        "id": "node_6",
+        "label": "Synapse",
+        "description": "stores the aggregate data\nreads daily aggregates from data lake"
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1450.0756106268175,
+        "y": 338.2709378589339
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_8",
+      "type": "sideNode",
+      "position": {
+        "x": 1036.818101220244,
+        "y": 64.87574666200325
+      },
+      "data": {
+        "id": "node_8",
+        "label": "Functions",
+        "description": "also gets the files from the event hub and aggregates them into data lake"
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1036.818101220244,
+        "y": 64.87574666200325
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_9",
+      "type": "sideNode",
+      "position": {
+        "x": 1348.7852706479846,
+        "y": 62.623028718202164
+      },
+      "data": {
+        "id": "node_9",
+        "label": "DataLakeStorage",
+        "description": "Stores daily data"
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1348.7852706479846,
+        "y": 62.623028718202164
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_10",
+      "type": "sideNode",
+      "position": {
+        "x": 1742.2616272980615,
+        "y": 337.96782159224847
+      },
+      "data": {
+        "id": "node_10",
+        "label": "PowerBI",
+        "description": "Visualize the Data"
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1742.2616272980615,
+        "y": 337.96782159224847
+      },
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "source": "node_1",
+      "sourceHandle": null,
+      "target": "node_2",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_1-node_2"
+    },
+    {
+      "source": "node_2",
+      "sourceHandle": null,
+      "target": "node_3",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_2-node_3",
+      "selected": false
+    },
+    {
+      "source": "node_3",
+      "sourceHandle": null,
+      "target": "node_4",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_3-node_4"
+    },
+    {
+      "source": "node_3",
+      "sourceHandle": null,
+      "target": "node_5",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_3-node_5",
+      "selected": false
+    },
+    {
+      "source": "node_4",
+      "sourceHandle": null,
+      "target": "node_6",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_4-node_6"
+    },
+    {
+      "source": "node_5",
+      "sourceHandle": null,
+      "target": "node_8",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_5-node_8"
+    },
+    {
+      "source": "node_5",
+      "sourceHandle": null,
+      "target": "node_4",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_5-node_4"
+    },
+    {
+      "source": "node_3",
+      "sourceHandle": null,
+      "target": "node_8",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_3-node_8"
+    },
+    {
+      "source": "node_8",
+      "sourceHandle": null,
+      "target": "node_9",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_8-node_9"
+    },
+    {
+      "source": "node_9",
+      "sourceHandle": null,
+      "target": "node_6",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_9-node_6"
+    },
+    {
+      "source": "node_6",
+      "sourceHandle": null,
+      "target": "node_10",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_6-node_10"
+    }
+  ]
+}
