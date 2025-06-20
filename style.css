@@ -14,6 +14,19 @@
   flex-direction: column;
 }
 
+/* Promo banner above sidebar header */
+.promo {
+  padding: 12px;
+  background: #fff;
+  text-align: center;
+}
+.promo img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 8px;
+  cursor: pointer;
+}
+
 /* Fixed header in sidebar */
 .tools-header {
   padding: 12px;
@@ -35,7 +48,7 @@
   margin-bottom: 8px;
 }
 
-/* Category headers (all levels) */
+/* Category headers */
 .tools-category-header {
   cursor: pointer;
   font-weight: bold;
@@ -51,18 +64,18 @@
 }
 
 /* Indentation for nested levels */
-.tools-level-1 { padding-left:   0; }
-.tools-level-2 { padding-left:  12px; }
-.tools-level-3 { padding-left:  24px; }
+.tools-level-1 { padding-left: 0; }
+.tools-level-2 { padding-left: 12px; }
+.tools-level-3 { padding-left: 24px; }
 
-/* Animated collapse/expand containers */
+/* Animated collapse/expand */
 .tools-items {
-  overflow: hidden; /* animated collapse containers */
+  overflow: hidden;
   transition: max-height 0.3s ease;
   max-height: 0;
 }
 .tools-items.expanded {
-  max-height: 400px; /* adjust as needed */
+  max-height: 400px;
 }
 
 /* Individual draggable tool items */
@@ -77,94 +90,7 @@
   font-size: 13px;
 }
 
-/* Canvas wrapper */
-.reactflow-wrapper {
-  flex-grow: 1;
-  position: relative;
-}
-
-/* Import/Export toolbar */
-.toolbar {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  z-index: 4;
-  display: flex;
-  gap: 8px;
-}
-
-/* Toolbar buttons and labels */
-.toolbar button,
-.toolbar .import-label {
-  padding: 6px 12px;
-  background: #1e90ff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 13px;
-}
-
-.toolbar button:hover,
-.toolbar .import-label:hover {
-  background: #0d6efd;
-}
-
-/* Custom node styling */
-/* Custom node styling */
-.side-node {
-  position: relative; /* ensure delete button absolute placement */
-  width: 200px;
-  height: 80px;
-  border: 1px solid #777;
-  border-radius: 4px;
-  background: #fff;
-  display: flex;
-  flex-direction: column;
-  overflow: visible; /* allow handles to show fully */
-}  
-
-/* Handle styling on nodes */
-.react-flow__handle {
-  background: #555;
-  border-radius: 50%; /* fully round connectors */
-}
-
-/* Node label and description */
-.node-label {
-  padding: 4px;
-  font-weight: bold;
-  text-align: center;
-  background: #f0f0f0;
-  border-bottom: 1px solid #ddd;
-}
-
-.node-desc {
-  flex: 1;
-  border: none;
-  padding: 4px;
-  resize: none;
-  overflow-y: auto;
-  font-size: 12px;
-}
-
-.node-delete-btn {
-  position: absolute;
-  top: 4px;
-  right: 4px;
-  background: transparent;
-  border: none;
-  font-size: 14px;
-  cursor: pointer;
-  color: #888;
-  z-index: 10;
-}
-
-.node-delete-btn:hover {
-  color: red;
-}
-
-/* Make the “➕ Custom Element” match the regular tools */
+/* Footer “+ Custom Element” */
 .tools-footer .tool {
   padding: 6px 8px;
   background: #fff;
@@ -179,8 +105,86 @@
   background: #f0f0f0;
 }
 
-/* Custom element title input matches .node-label */
-/* Custom element title input matches .node-label */
+/* Canvas wrapper */
+.reactflow-wrapper {
+  flex-grow: 1;
+  position: relative;
+}
+
+/* Import/Export toolbar (top-right) */
+.toolbar {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 4;
+  display: flex;
+  gap: 8px;
+}
+.toolbar button,
+.toolbar .import-label {
+  padding: 6px 12px;
+  background: #1e90ff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+.toolbar button:hover,
+.toolbar .import-label:hover {
+  background: #0d6efd;
+}
+
+/* Clear Diagram toolbar (top-left) */
+.toolbar-left {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 4;
+  display: flex;
+  gap: 8px;
+}
+.toolbar-left button {
+  padding: 6px 12px;
+  background: #1e90ff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+.toolbar-left button:hover {
+  background: #0d6efd;
+}
+
+/* Custom node styling */
+.side-node {
+  position: relative;
+  width: 200px;
+  height: 80px;
+  border: 1px solid #777;
+  border-radius: 4px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+}
+.node-delete-btn {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  color: #888;
+  z-index: 10;
+}
+.node-delete-btn:hover {
+  color: red;
+}
+
+/* Node label input */
 .node-label-input {
   display: block;
   width: 100%;
@@ -194,11 +198,32 @@
   border: none;
   border-bottom: 1px solid #ddd;
   box-sizing: border-box;
-  line-height: inherit;
   margin: 0;
 }
-
 .node-label-input:focus {
   outline: none;
   border-bottom-color: #888;
+}
+
+/* Handle styling */
+.react-flow__handle {
+  background: #555;
+  border-radius: 50%;
+}
+
+/* Node label and description */
+.node-label {
+  padding: 4px;
+  font-weight: bold;
+  text-align: center;
+  background: #f0f0f0;
+  border-bottom: 1px solid #ddd;
+}
+.node-desc {
+  flex: 1;
+  border: none;
+  padding: 4px;
+  resize: none;
+  overflow-y: auto;
+  font-size: 12px;
 }
