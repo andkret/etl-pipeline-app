@@ -1,4 +1,10 @@
 [
-  "architecture-2.json",
-  "architecture-8.json"
+  {
+    "file": "architecture-2.json",
+    "description": "Minimal serverless setup"
+  },
+  {
+    "file": "architecture-8.json",
+    "description": "Advanced lakehouse platform das ist ein test wie viel ich dazu schreiben kann. es sollte"
+  }
 ]

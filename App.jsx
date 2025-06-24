@@ -273,15 +273,13 @@ function PipelineBuilder() {
 
   const fetchDesignFiles = async () => {
     try {
-    const base = import.meta.env.BASE_URL;
-    const res = await fetch(`${base}designs/index.json`);
-    const text = await res.text();
-    
-    const files = JSON.parse(text);
-    setDesignFiles(files);
-  } catch (err) {
-    console.error('Failed to load designs:', err);
-  }
+      const base = import.meta.env.BASE_URL;
+      const res = await fetch(`${base}designs/index.json`);
+      const entries = await res.json();
+      setDesignFiles(entries);
+    } catch (err) {
+      console.error('Failed to load designs:', err);
+    }
   };
 
   const toggle = useCallback((key) => {
@@ -319,9 +317,9 @@ function PipelineBuilder() {
           <div className="modal" onClick={(e) => e.stopPropagation()}>
             <h3>Select a Design</h3>
             <div className="modal-list">
-              {designFiles.map((file) => (
+              {designFiles.map(({ file, description }) => (
                 <div key={file} className="modal-item" onClick={() => handleSelectDesign(file)}>
-                  {file}
+                  {description}
                 </div>
               ))}
             </div>

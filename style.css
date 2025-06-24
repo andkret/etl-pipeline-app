@@ -246,7 +246,7 @@
   background: #fff;
   padding: 20px;
   border-radius: 6px;
-  width: 300px;
+  width: 500px;
   max-height: 400px;
   overflow: hidden;
   display: flex;
@@ -262,10 +262,24 @@
 
 .modal-list {
   margin-top: 10px;
-  overflow-y: auto;
+  overflow-y: scroll;         /* always show scrollbar */
   flex-grow: 1;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+/* Show scrollbar on WebKit (Chrome, Safari) */
+.modal-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-list::-webkit-scrollbar-thumb {
+  background-color: #bbb;
+  border-radius: 4px;
+}
+
+.modal-list::-webkit-scrollbar-track {
+  background-color: #eee;
 }
 
 .modal-item {
