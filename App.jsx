@@ -273,7 +273,8 @@ function PipelineBuilder() {
 
   const fetchDesignFiles = async () => {
     try {
-    const res = await fetch(new URL('./designs/index.json', import.meta.url));
+    const base = import.meta.env.BASE_URL;
+    const res = await fetch(`${base}designs/index.json`);
     const text = await res.text();
     
     const files = JSON.parse(text);
@@ -307,7 +308,8 @@ function PipelineBuilder() {
   const handleSelectDesign = (filename) => {
     setShowModal(false);
     clearDiagram();
-    loadDiagram(`./designs/${filename}`);
+    const base = import.meta.env.BASE_URL;
+    loadDiagram(`${base}designs/${filename}`);
   };
 
   return (
