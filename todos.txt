@@ -1,0 +1,7 @@
+MongoDB
+Streamlit
+API Gateway word fix
+AWS Relational Stores fehlen
+Glue crawlers fehlen
+Glue Data Catalog als ein element
+Redshift spectrum missing

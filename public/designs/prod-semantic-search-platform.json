@@ -1,0 +1,255 @@
+{
+  "nodes": [
+    {
+      "id": "node_37",
+      "type": "sideNode",
+      "position": {
+        "x": 61.71207946109806,
+        "y": 241.8325902167668
+      },
+      "data": {
+        "id": "node_37",
+        "label": "FastAPI",
+        "description": "Creates resources & methods for clients",
+        "isCustom": false
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "node_39",
+      "type": "sideNode",
+      "position": {
+        "x": 420.3533292120047,
+        "y": 176.97193866607088
+      },
+      "data": {
+        "id": "node_39",
+        "label": "DuckDB Writer",
+        "description": "- Transforms incoming messages\n- Writes them into DuckDB",
+        "isCustom": true
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 420.3533292120047,
+        "y": 176.97193866607088
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_40",
+      "type": "sideNode",
+      "position": {
+        "x": 423.2148285451237,
+        "y": 352.4772310973657
+      },
+      "data": {
+        "id": "node_40",
+        "label": "Qdrant Writer",
+        "description": "- Creates embeddings and meta data for Qdrant\n- Writes the data",
+        "isCustom": true
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 423.2148285451237,
+        "y": 352.4772310973657
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_41",
+      "type": "sideNode",
+      "position": {
+        "x": -246.0492255517564,
+        "y": 241.52302507341895
+      },
+      "data": {
+        "id": "node_41",
+        "label": "Client",
+        "description": "Sends log messages to API with python",
+        "isCustom": true
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -246.0492255517564,
+        "y": 241.52302507341895
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_42",
+      "type": "sideNode",
+      "position": {
+        "x": 787.3107088076667,
+        "y": 178.99190155938737
+      },
+      "data": {
+        "id": "node_42",
+        "label": "DuckDB",
+        "description": "Acts as the traditional OLAP store",
+        "isCustom": true
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 787.3107088076667,
+        "y": 178.99190155938737
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_43",
+      "type": "sideNode",
+      "position": {
+        "x": 792.5782478042445,
+        "y": 352.1622460718786
+      },
+      "data": {
+        "id": "node_43",
+        "label": "Qdrant",
+        "description": "Stores data for semantic search",
+        "isCustom": true
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 792.5782478042445,
+        "y": 352.1622460718786
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_44",
+      "type": "sideNode",
+      "position": {
+        "x": 1252.171025255647,
+        "y": 265.2478526283469
+      },
+      "data": {
+        "id": "node_44",
+        "label": "Streamlit",
+        "description": "- Queries & visualizes data from DuckDB\n- Searches data in Qdrant and creates an output table",
+        "isCustom": true
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1252.171025255647,
+        "y": 265.2478526283469
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_45",
+      "type": "sideNode",
+      "position": {
+        "x": -90.76597033532971,
+        "y": 46.36558470556359
+      },
+      "data": {
+        "id": "node_45",
+        "label": "Coming soon to:",
+        "description": "https://learndataengineering.com/",
+        "isCustom": true
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": -90.76597033532971,
+        "y": 46.36558470556359
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "node_41",
+      "sourceHandle": null,
+      "target": "node_37",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_41-node_37"
+    },
+    {
+      "source": "node_37",
+      "sourceHandle": null,
+      "target": "node_39",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_37-node_39"
+    },
+    {
+      "source": "node_37",
+      "sourceHandle": null,
+      "target": "node_40",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_37-node_40"
+    },
+    {
+      "source": "node_39",
+      "sourceHandle": null,
+      "target": "node_42",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_39-node_42"
+    },
+    {
+      "source": "node_40",
+      "sourceHandle": null,
+      "target": "node_43",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_40-node_43"
+    },
+    {
+      "source": "node_42",
+      "sourceHandle": null,
+      "target": "node_44",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_42-node_44"
+    },
+    {
+      "source": "node_43",
+      "sourceHandle": null,
+      "target": "node_44",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_43-node_44"
+    }
+  ]
+}
