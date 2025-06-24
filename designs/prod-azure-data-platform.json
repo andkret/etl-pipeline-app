@@ -4,8 +4,8 @@
       "id": "node_1",
       "type": "sideNode",
       "position": {
-        "x": 41.5,
-        "y": 197.75
+        "x": 30.52231129862315,
+        "y": 185.92787370620957
       },
       "data": {
         "id": "node_1",
@@ -16,8 +16,8 @@
       "height": 82,
       "selected": false,
       "positionAbsolute": {
-        "x": 41.5,
-        "y": 197.75
+        "x": 30.52231129862315,
+        "y": 185.92787370620957
       },
       "dragging": false
     },
@@ -67,8 +67,8 @@
       "id": "node_4",
       "type": "sideNode",
       "position": {
-        "x": 875.0665192221246,
-        "y": 327.5439652449728
+        "x": 990.4089269290683,
+        "y": 329.0868560315581
       },
       "data": {
         "id": "node_4",
@@ -79,8 +79,8 @@
       "height": 82,
       "selected": false,
       "positionAbsolute": {
-        "x": 875.0665192221246,
-        "y": 327.5439652449728
+        "x": 990.4089269290683,
+        "y": 329.0868560315581
       },
       "dragging": false
     },
@@ -88,8 +88,8 @@
       "id": "node_5",
       "type": "sideNode",
       "position": {
-        "x": 640.0492532910416,
-        "y": 175.11411163674336
+        "x": 676.9492203288826,
+        "y": 39.49067927187878
       },
       "data": {
         "id": "node_5",
@@ -100,8 +100,8 @@
       "height": 82,
       "selected": false,
       "positionAbsolute": {
-        "x": 640.0492532910416,
-        "y": 175.11411163674336
+        "x": 676.9492203288826,
+        "y": 39.49067927187878
       },
       "dragging": false
     },
@@ -109,41 +109,83 @@
       "id": "node_6",
       "type": "sideNode",
       "position": {
-        "x": 1183.2333314241196,
-        "y": 326.44881156514344
+        "x": 1450.0756106268175,
+        "y": 338.2709378589339
       },
       "data": {
         "id": "node_6",
         "label": "Synapse",
-        "description": "stores the aggregate data"
+        "description": "stores the aggregate data\nreads daily aggregates from data lake"
       },
       "width": 202,
       "height": 82,
       "selected": false,
       "positionAbsolute": {
-        "x": 1183.2333314241196,
-        "y": 326.44881156514344
+        "x": 1450.0756106268175,
+        "y": 338.2709378589339
       },
       "dragging": false
     },
     {
-      "id": "node_7",
+      "id": "node_8",
       "type": "sideNode",
       "position": {
-        "x": 1493.6311190588456,
-        "y": 331.62796017103966
+        "x": 1036.818101220244,
+        "y": 64.87574666200325
       },
       "data": {
-        "id": "node_7",
-        "label": "Monitor",
-        "description": "Visualize the data"
+        "id": "node_8",
+        "label": "Functions",
+        "description": "also gets the files from the event hub and aggregates them into data lake"
       },
       "width": 202,
       "height": 82,
-      "selected": true,
+      "selected": false,
       "positionAbsolute": {
-        "x": 1493.6311190588456,
-        "y": 331.62796017103966
+        "x": 1036.818101220244,
+        "y": 64.87574666200325
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_9",
+      "type": "sideNode",
+      "position": {
+        "x": 1348.7852706479846,
+        "y": 62.623028718202164
+      },
+      "data": {
+        "id": "node_9",
+        "label": "DataLakeStorage",
+        "description": "Stores daily data"
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1348.7852706479846,
+        "y": 62.623028718202164
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_10",
+      "type": "sideNode",
+      "position": {
+        "x": 1742.2616272980615,
+        "y": 337.96782159224847
+      },
+      "data": {
+        "id": "node_10",
+        "label": "PowerBI",
+        "description": "Visualize the Data"
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1742.2616272980615,
+        "y": 337.96782159224847
       },
       "dragging": false
     }
@@ -169,7 +211,8 @@
       "markerEnd": {
         "type": "arrowclosed"
       },
-      "id": "reactflow__edge-node_2-node_3"
+      "id": "reactflow__edge-node_2-node_3",
+      "selected": false
     },
     {
       "source": "node_3",
@@ -195,17 +238,6 @@
       "selected": false
     },
     {
-      "source": "node_5",
-      "sourceHandle": null,
-      "target": "node_4",
-      "targetHandle": null,
-      "animated": true,
-      "markerEnd": {
-        "type": "arrowclosed"
-      },
-      "id": "reactflow__edge-node_5-node_4"
-    },
-    {
       "source": "node_4",
       "sourceHandle": null,
       "target": "node_6",
@@ -217,15 +249,70 @@
       "id": "reactflow__edge-node_4-node_6"
     },
     {
-      "source": "node_6",
+      "source": "node_5",
       "sourceHandle": null,
-      "target": "node_7",
+      "target": "node_8",
       "targetHandle": null,
       "animated": true,
       "markerEnd": {
         "type": "arrowclosed"
       },
-      "id": "reactflow__edge-node_6-node_7"
+      "id": "reactflow__edge-node_5-node_8"
+    },
+    {
+      "source": "node_5",
+      "sourceHandle": null,
+      "target": "node_4",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_5-node_4"
+    },
+    {
+      "source": "node_3",
+      "sourceHandle": null,
+      "target": "node_8",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_3-node_8"
+    },
+    {
+      "source": "node_8",
+      "sourceHandle": null,
+      "target": "node_9",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_8-node_9"
+    },
+    {
+      "source": "node_9",
+      "sourceHandle": null,
+      "target": "node_6",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_9-node_6"
+    },
+    {
+      "source": "node_6",
+      "sourceHandle": null,
+      "target": "node_10",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_6-node_10"
     }
   ]
 }

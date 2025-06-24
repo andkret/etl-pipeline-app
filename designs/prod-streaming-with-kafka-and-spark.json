@@ -1,0 +1,215 @@
+{
+  "nodes": [
+    {
+      "id": "node_11",
+      "type": "sideNode",
+      "position": {
+        "x": 415.3621560247736,
+        "y": 253.39947780209548
+      },
+      "data": {
+        "id": "node_11",
+        "label": "FastAPI",
+        "description": "Creates resources and methods to ingest data",
+        "isCustom": false
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 415.3621560247736,
+        "y": 253.39947780209548
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_12",
+      "type": "sideNode",
+      "position": {
+        "x": 741.1013148162441,
+        "y": 253.78995426532765
+      },
+      "data": {
+        "id": "node_12",
+        "label": "Kafka",
+        "description": "Streams the incoming data",
+        "isCustom": false
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 741.1013148162441,
+        "y": 253.78995426532765
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_13",
+      "type": "sideNode",
+      "position": {
+        "x": 1005.1460260159672,
+        "y": 384.68541379821926
+      },
+      "data": {
+        "id": "node_13",
+        "label": "Spark",
+        "description": "Spark Streaming",
+        "isCustom": false
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1005.1460260159672,
+        "y": 384.68541379821926
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_14",
+      "type": "sideNode",
+      "position": {
+        "x": 1266.666507663956,
+        "y": 257.8555461390651
+      },
+      "data": {
+        "id": "node_14",
+        "label": "MongoDB",
+        "description": "Stores the data as JSON documents",
+        "isCustom": true
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1266.666507663956,
+        "y": 257.8555461390651
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_15",
+      "type": "sideNode",
+      "position": {
+        "x": 1511.7373763192509,
+        "y": 258.26527373412296
+      },
+      "data": {
+        "id": "node_15",
+        "label": "Streamlit",
+        "description": "Visualize the data",
+        "isCustom": true
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1511.7373763192509,
+        "y": 258.26527373412296
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_16",
+      "type": "sideNode",
+      "position": {
+        "x": 113.42873441465099,
+        "y": 253.31775037822067
+      },
+      "data": {
+        "id": "node_16",
+        "label": "Client",
+        "description": "Writes JSON messages to the API",
+        "isCustom": true
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 113.42873441465099,
+        "y": 253.31775037822067
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_17",
+      "type": "sideNode",
+      "position": {
+        "x": 117.72707088021639,
+        "y": 39.36917392651842
+      },
+      "data": {
+        "id": "node_17",
+        "label": "Build this here:",
+        "description": "https://learndataengineering.com/p/apache-spark-and-kafka-bootcamp",
+        "isCustom": true
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 117.72707088021639,
+        "y": 39.36917392651842
+      },
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "source": "node_11",
+      "sourceHandle": null,
+      "target": "node_12",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_11-node_12"
+    },
+    {
+      "source": "node_12",
+      "sourceHandle": null,
+      "target": "node_13",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_12-node_13"
+    },
+    {
+      "source": "node_13",
+      "sourceHandle": null,
+      "target": "node_14",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_13-node_14"
+    },
+    {
+      "source": "node_14",
+      "sourceHandle": null,
+      "target": "node_15",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_14-node_15"
+    },
+    {
+      "source": "node_16",
+      "sourceHandle": null,
+      "target": "node_11",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_16-node_11"
+    }
+  ]
+}

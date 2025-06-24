@@ -1,0 +1,248 @@
+{
+  "nodes": [
+    {
+      "id": "node_31",
+      "type": "sideNode",
+      "position": {
+        "x": 350.7235121061105,
+        "y": 145.49544600176262
+      },
+      "data": {
+        "id": "node_31",
+        "label": "S3",
+        "description": "Bucket that holds the data in files",
+        "isCustom": false
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 350.7235121061105,
+        "y": 145.49544600176262
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_32",
+      "type": "sideNode",
+      "position": {
+        "x": 801.8865736278627,
+        "y": 149.3107784459212
+      },
+      "data": {
+        "id": "node_32",
+        "label": "Glue Crawler",
+        "description": "- Crawls S3 files\n- Writes schema to data catalog",
+        "isCustom": true
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 801.8865736278627,
+        "y": 149.3107784459212
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_33",
+      "type": "sideNode",
+      "position": {
+        "x": 1047.9755162760912,
+        "y": 148.35694533488157
+      },
+      "data": {
+        "id": "node_33",
+        "label": "DataCatalog",
+        "description": "Stores the structure of the S3 files as tables",
+        "isCustom": false
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1047.9755162760912,
+        "y": 148.35694533488157
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_34",
+      "type": "sideNode",
+      "position": {
+        "x": 1329.3562840327866,
+        "y": -118.71632575621915
+      },
+      "data": {
+        "id": "node_34",
+        "label": "Athena",
+        "description": "- Uses catalog to understand data structure\n- Reads from S3\n- Delivers results to client",
+        "isCustom": false
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1329.3562840327866,
+        "y": -118.71632575621915
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_35",
+      "type": "sideNode",
+      "position": {
+        "x": 1363.694276030214,
+        "y": 427.8300468694977
+      },
+      "data": {
+        "id": "node_35",
+        "label": "Redshift Spectrum",
+        "description": "Reads tables from catalog\nQueries data from files\ndelivers to client",
+        "isCustom": true
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1363.694276030214,
+        "y": 427.8300468694977
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_36",
+      "type": "sideNode",
+      "position": {
+        "x": 1681.3207020064158,
+        "y": 150.26461155696086
+      },
+      "data": {
+        "id": "node_36",
+        "label": "QuickSight",
+        "description": "- Writes SQL Queries to Athena/Spectrum\n- Visualizes Results",
+        "isCustom": false
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1681.3207020064158,
+        "y": 150.26461155696086
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_37",
+      "type": "sideNode",
+      "position": {
+        "x": 351.9260710819619,
+        "y": -169.78824411272504
+      },
+      "data": {
+        "id": "node_37",
+        "label": "Build this here:",
+        "description": "https://learndataengineering.com/p/modern-data-warehouses",
+        "isCustom": true
+      },
+      "width": 202,
+      "height": 82,
+      "selected": true,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": 351.9260710819619,
+        "y": -169.78824411272504
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "node_31",
+      "sourceHandle": null,
+      "target": "node_32",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_31-node_32"
+    },
+    {
+      "source": "node_32",
+      "sourceHandle": null,
+      "target": "node_33",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_32-node_33"
+    },
+    {
+      "source": "node_33",
+      "sourceHandle": null,
+      "target": "node_35",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_33-node_35"
+    },
+    {
+      "source": "node_33",
+      "sourceHandle": null,
+      "target": "node_34",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_33-node_34"
+    },
+    {
+      "source": "node_31",
+      "sourceHandle": null,
+      "target": "node_34",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_31-node_34"
+    },
+    {
+      "source": "node_31",
+      "sourceHandle": null,
+      "target": "node_35",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_31-node_35"
+    },
+    {
+      "source": "node_34",
+      "sourceHandle": null,
+      "target": "node_36",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_34-node_36"
+    },
+    {
+      "source": "node_35",
+      "sourceHandle": null,
+      "target": "node_36",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_35-node_36"
+    }
+  ]
+}

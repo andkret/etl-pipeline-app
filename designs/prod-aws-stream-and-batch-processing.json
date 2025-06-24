@@ -1,0 +1,479 @@
+{
+  "nodes": [
+    {
+      "id": "node_17",
+      "type": "sideNode",
+      "position": {
+        "x": 269.9828526269296,
+        "y": 150.2088787144782
+      },
+      "data": {
+        "id": "node_17",
+        "label": "API Gateway",
+        "description": "Hosts the resources and methods (POST/PUT) for the client",
+        "isCustom": true
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": 269.9828526269296,
+        "y": 150.2088787144782
+      }
+    },
+    {
+      "id": "node_18",
+      "type": "sideNode",
+      "position": {
+        "x": -5.024184747853269,
+        "y": 147.843974192653
+      },
+      "data": {
+        "id": "node_18",
+        "label": "Client",
+        "description": "Sends data to the API",
+        "isCustom": true
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -5.024184747853269,
+        "y": 147.843974192653
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_19",
+      "type": "sideNode",
+      "position": {
+        "x": 584.396386210904,
+        "y": 149.37044262492094
+      },
+      "data": {
+        "id": "node_19",
+        "label": "Lambda",
+        "description": "- Processes the clients POST/PUT request\n- Sends it to Kinesis",
+        "isCustom": false
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 584.396386210904,
+        "y": 149.37044262492094
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_20",
+      "type": "sideNode",
+      "position": {
+        "x": 886.1486383692177,
+        "y": 152.19693523267566
+      },
+      "data": {
+        "id": "node_20",
+        "label": "Kinesis",
+        "description": "- \"Buffers messages for the consumers to use\"\n- Forwards messages to Firehose",
+        "isCustom": false
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 886.1486383692177,
+        "y": 152.19693523267566
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_21",
+      "type": "sideNode",
+      "position": {
+        "x": 1166.271032363646,
+        "y": 343.0491793126492
+      },
+      "data": {
+        "id": "node_21",
+        "label": "Firehose",
+        "description": "- Stores messages in S3\n- Starts the redshift import",
+        "isCustom": false
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1166.271032363646,
+        "y": 343.0491793126492
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_22",
+      "type": "sideNode",
+      "position": {
+        "x": 1193.9394233190358,
+        "y": 149.3704426249209
+      },
+      "data": {
+        "id": "node_22",
+        "label": "Lambda",
+        "description": "Processes messages from Kinesis and creates S3 files (showcase)",
+        "isCustom": false
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1193.9394233190358,
+        "y": 149.3704426249209
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_23",
+      "type": "sideNode",
+      "position": {
+        "x": 1198.9700398563793,
+        "y": 6.836307400185866
+      },
+      "data": {
+        "id": "node_23",
+        "label": "Lambda",
+        "description": "- Processes messages and writes them into DynamoDB",
+        "isCustom": false
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1198.9700398563793,
+        "y": 6.836307400185866
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_24",
+      "type": "sideNode",
+      "position": {
+        "x": 1494.099543380537,
+        "y": 6.836307400185866
+      },
+      "data": {
+        "id": "node_24",
+        "label": "DynamoDB",
+        "description": "Stores the data for the Client to query",
+        "isCustom": true
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1494.099543380537,
+        "y": 6.836307400185866
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_25",
+      "type": "sideNode",
+      "position": {
+        "x": 1766.5912724866478,
+        "y": 5.9978713106286
+      },
+      "data": {
+        "id": "node_25",
+        "label": "API Gateway",
+        "description": "Hosts resources for the client to GET request data from DynamoDB",
+        "isCustom": true
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1766.5912724866478,
+        "y": 5.9978713106286
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_26",
+      "type": "sideNode",
+      "position": {
+        "x": 1492.422671201422,
+        "y": 151.88575089359273
+      },
+      "data": {
+        "id": "node_26",
+        "label": "S3",
+        "description": "Stores the S3 files from Lambda",
+        "isCustom": false
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1492.422671201422,
+        "y": 151.88575089359273
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_27",
+      "type": "sideNode",
+      "position": {
+        "x": 1494.937979470094,
+        "y": 482.2295701791552
+      },
+      "data": {
+        "id": "node_27",
+        "label": "Redshift",
+        "description": "Stores the data as tables for the Analysts",
+        "isCustom": false
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1494.937979470094,
+        "y": 482.2295701791552
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_28",
+      "type": "sideNode",
+      "position": {
+        "x": 847.6653183318854,
+        "y": 482.34496720063754
+      },
+      "data": {
+        "id": "node_28",
+        "label": "Glue",
+        "description": "- Processes large amounts of data on-demand\n- Writes to Redshift",
+        "isCustom": false
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 847.6653183318854,
+        "y": 482.34496720063754
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_29",
+      "type": "sideNode",
+      "position": {
+        "x": 481.38414421684274,
+        "y": 482.2295701791551
+      },
+      "data": {
+        "id": "node_29",
+        "label": "S3",
+        "description": "Holds larger datasets that get imported at once",
+        "isCustom": false
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 481.38414421684274,
+        "y": 482.2295701791551
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_30",
+      "type": "sideNode",
+      "position": {
+        "x": 1488.6464135764077,
+        "y": 323.86223776617635
+      },
+      "data": {
+        "id": "node_30",
+        "label": "S3",
+        "description": "Intermediary storage for messages from Firehose for Redshift import",
+        "isCustom": false
+      },
+      "width": 202,
+      "height": 82,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1488.6464135764077,
+        "y": 323.86223776617635
+      },
+      "dragging": false
+    },
+    {
+      "id": "node_31",
+      "type": "sideNode",
+      "position": {
+        "x": 231.06892550074798,
+        "y": -64.17770560335008
+      },
+      "data": {
+        "id": "node_31",
+        "label": "Build this here:",
+        "description": "https://learndataengineering.com/p/data-engineering-on-aws",
+        "isCustom": true
+      },
+      "width": 202,
+      "height": 82,
+      "selected": true,
+      "positionAbsolute": {
+        "x": 231.06892550074798,
+        "y": -64.17770560335008
+      },
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "source": "node_18",
+      "sourceHandle": null,
+      "target": "node_17",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_18-node_17"
+    },
+    {
+      "source": "node_17",
+      "sourceHandle": null,
+      "target": "node_19",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_17-node_19"
+    },
+    {
+      "source": "node_19",
+      "sourceHandle": null,
+      "target": "node_20",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_19-node_20"
+    },
+    {
+      "source": "node_20",
+      "sourceHandle": null,
+      "target": "node_21",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_20-node_21"
+    },
+    {
+      "source": "node_20",
+      "sourceHandle": null,
+      "target": "node_22",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_20-node_22"
+    },
+    {
+      "source": "node_20",
+      "sourceHandle": null,
+      "target": "node_23",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_20-node_23"
+    },
+    {
+      "source": "node_23",
+      "sourceHandle": null,
+      "target": "node_24",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_23-node_24"
+    },
+    {
+      "source": "node_24",
+      "sourceHandle": null,
+      "target": "node_25",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_24-node_25"
+    },
+    {
+      "source": "node_22",
+      "sourceHandle": null,
+      "target": "node_26",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_22-node_26"
+    },
+    {
+      "source": "node_21",
+      "sourceHandle": null,
+      "target": "node_27",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_21-node_27"
+    },
+    {
+      "source": "node_28",
+      "sourceHandle": null,
+      "target": "node_27",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_28-node_27"
+    },
+    {
+      "source": "node_29",
+      "sourceHandle": null,
+      "target": "node_28",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_29-node_28"
+    },
+    {
+      "source": "node_21",
+      "sourceHandle": null,
+      "target": "node_30",
+      "targetHandle": null,
+      "animated": true,
+      "markerEnd": {
+        "type": "arrowclosed"
+      },
+      "id": "reactflow__edge-node_21-node_30"
+    }
+  ]
+}

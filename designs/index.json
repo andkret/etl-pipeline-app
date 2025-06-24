@@ -1,10 +1,22 @@
 [
   {
-    "file": "architecture-2.json",
-    "description": "Minimal serverless setup"
+    "file": "prod-aws-stream-and-batch-processing.json",
+    "description": "Batch & stream processing platform on AWS"
   },
   {
-    "file": "architecture-8.json",
-    "description": "Advanced lakehouse platform das ist ein test wie viel ich dazu schreiben kann. es sollte"
+    "file": "prod-streaming-with-kafka-and-spark.json",
+    "description": "Streaming pipeline with Kafka & Spark"
+  },
+  {
+    "file": "prod-lakehouse-on-aws.json",
+    "description": "Lakehouse architecture on AWS"
+  },
+  {
+    "file": "prod-semantic-search-platform.json",
+    "description": "Minimalistic semantic search platform for log messages"
+  },
+  {
+    "file": "prod-azure-data-platform.json",
+    "description": "An Azure pipeline for event processing"
   }
 ]
