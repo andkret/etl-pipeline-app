@@ -329,7 +329,7 @@ function PipelineBuilder() {
 
       <aside className="tools-pane">
         <div className="promo">
-          <div>Check out our Academy & Coaching. 30% Summer Sale at:</div>
+          <div>Check out our Academy & Coaching at:</div>
           <a
             href="https://learndataengineering.com"
             target="_blank"
